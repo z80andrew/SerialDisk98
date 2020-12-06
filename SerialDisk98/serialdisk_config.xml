@@ -2,6 +2,7 @@
 <configuration>
   <LocalDirectoryPath>Atari</LocalDirectoryPath>
   <LoggingLevel>Info</LoggingLevel>
+  <IsCompressionEnabled>true</IsCompressionEnabled>
 
   <SerialSettings>
     <PortName>COM1</PortName>

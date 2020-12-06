@@ -78,7 +78,6 @@ namespace AtariST.SerialDisk98
 
             Console.WriteLine();
             Console.WriteLine();
-            Console.ReadKey();
         }
 
         private static string ParseLocalDirectoryPath(string _applicationSettingsPath, string[] args)
@@ -177,8 +176,7 @@ namespace AtariST.SerialDisk98
             _disk = new Disk(_diskParameters, _logger);
 
             _serial = new Serial(_applicationSettings.SerialSettings, _disk, _logger, _applicationSettings.IsCompressionEnabled);
-            Thread serialListener = new Thread(_serial.Listen);
-            ThreadManager.AddThread(serialListener);
+            _serial.Listen();
 
             _logger.Log($"Baud rate:{_applicationSettings.SerialSettings.BaudRate} | Data bits:{_applicationSettings.SerialSettings.DataBits}" +
                 $" | Parity:{_applicationSettings.SerialSettings.Parity} | Stop bits:{_applicationSettings.SerialSettings.StopBits} | Flow control:{_applicationSettings.SerialSettings.Handshake}", LoggingLevel.Info);
@@ -200,8 +198,6 @@ namespace AtariST.SerialDisk98
                 _logger.Log("Thread cancellation requested", LoggingLevel.Debug);
                 _logger.Log(ex.Message, LoggingLevel.Debug);
             }
-
-            Console.ReadKey();
         }
     }
 }
