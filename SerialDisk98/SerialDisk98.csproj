@@ -84,10 +84,10 @@
     <Compile Include="Utilities\ThreadManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Atari\SERDISK.CFG">
+    <None Include="Atari\SERDSK98.CFG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Atari\SERDISK2.TOS">
+    <None Include="Atari\SERDSK98.TOS">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
