@@ -84,8 +84,20 @@
     <Compile Include="Utilities\ThreadManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Atari\SERDISK.CFG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Atari\SERDISK2.TOS">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\serialdisk_default_config.xml" />
+    <Content Include="Atari\hello_l.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Atari\hello_m.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="serialdisk_config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -27,6 +27,7 @@ namespace AtariST.SerialDisk98.Common
 
                     { "--logging-level", "LoggingLevel" },
                     { "--log-filename", "LogFileName" },
+                    { string.Empty, "LocalDirectoryPath" }
                 };
             }
         }
