@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace SerialDiskXtreme.Utilities
+namespace SerialDisk98.Utilities
 {
     public static class ParameterHelper
     {

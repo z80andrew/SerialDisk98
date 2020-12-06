@@ -3,7 +3,7 @@ using AtariST.SerialDisk98.Comms;
 using AtariST.SerialDisk98.Models;
 using AtariST.SerialDisk98.Storage;
 using AtariST.SerialDisk98.Utilities;
-using SerialDiskXtreme.Utilities;
+using SerialDisk98.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -104,7 +104,6 @@ namespace AtariST.SerialDisk98
                     throw new Exception($"Could not find path {_applicationSettingsPath}");
             }
 
-
             DirectoryInfo localDirectoryInfo = new DirectoryInfo(localDirectoryPath);
             return localDirectoryInfo.FullName;
         }
@@ -156,7 +155,7 @@ namespace AtariST.SerialDisk98
 
             _applicationSettings = ParameterHelper.MapConsoleParameters(applicationSettings, args);
 
-            _applicationSettings.LocalDirectoryPath = args[args.Length - 1];
+            _applicationSettings.LocalDirectoryPath = ParseLocalDirectoryPath(applicationSettings.LocalDirectoryPath, args);
 
             if (String.IsNullOrEmpty(_applicationSettings.LocalDirectoryPath)
                 || !Directory.Exists(_applicationSettings.LocalDirectoryPath))
