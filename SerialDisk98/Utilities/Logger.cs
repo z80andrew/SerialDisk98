@@ -36,8 +36,9 @@ namespace AtariST.SerialDisk98.Utilities
 
                 _logFilePath = Path.Combine(folderPath, fileName);
 
-                if (File.Exists(_logFilePath)) _fileStream = new FileStream(_logFilePath, FileMode.Append);
-                else _fileStream = new FileStream(_logFilePath, FileMode.OpenOrCreate);
+                FileMode fileAccessMode = File.Exists(_logFilePath) ? FileMode.Append : FileMode.OpenOrCreate;
+
+                _fileStream = new FileStream(_logFilePath, FileMode.Append, FileAccess.Write);
             }
 
             catch (Exception logException)
@@ -78,10 +79,10 @@ namespace AtariST.SerialDisk98.Utilities
             {
                 try
                 {
-                    using (StreamWriter fileWriter = new StreamWriter(_fileStream, Encoding.UTF8, 1024))
-                    {
-                        fileWriter.WriteLine($"{DateTime.Now.ToString(Constants.DATE_FORMAT)}\t{DateTime.Now.ToString(Constants.TIME_FORMAT)}\t{message}");
-                    }
+                    var bytesToWrite = ASCIIEncoding.ASCII.GetBytes(
+                        $"{DateTime.Now.ToString(Constants.DATE_FORMAT)}\t{DateTime.Now.ToString(Constants.TIME_FORMAT)}\t{message}\r\n");
+
+                    _fileStream.Write(bytesToWrite, 0, bytesToWrite.Length);
                 }
 
                 catch (Exception logException)
